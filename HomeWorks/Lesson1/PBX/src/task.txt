@@ -1,0 +1,4 @@
+Describe Phone class (one of the properties to be his number).
+Describe Network class (mobile network operator).
+Also the phone has to be a method call (Another phone number), which enumerates all the phones registered
+network. If the extension is found, make a call, if not display a message a wrong number.

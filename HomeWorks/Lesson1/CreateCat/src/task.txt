@@ -1,0 +1,1 @@
+Write class Cat with fields and methods. Create some exemplars and use this objects.
