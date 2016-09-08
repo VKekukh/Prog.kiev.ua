@@ -1,2 +1,0 @@
-Create class Triangle. As property, take the long side triangle. Create a method that will return area of this object.
-Create some objects and test them.

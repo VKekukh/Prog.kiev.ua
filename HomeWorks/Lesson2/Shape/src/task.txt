@@ -1,5 +1,0 @@
-Create an abstract class Shape which has two abstract methods: double getPerimetr() and double getArea.
-Create a class Point which has two properties: double x; double y
-Create classes that describe at least 3 geometric shapes(subclasses from Shape) and they their properties are class Point;
-Create a class Board. Board is divided into 4 parts. And one parts can has only one figure. The board has to have methods
-to add shape, remove, give information about shapes on the desk and total area.
