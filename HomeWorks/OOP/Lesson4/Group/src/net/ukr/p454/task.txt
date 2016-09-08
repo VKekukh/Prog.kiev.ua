@@ -1,0 +1,4 @@
+1. Improve Group class by adding the ability to adding an interactive object.
+2. Develop the ability to sort the list of students by name.
+3. Develop the ability to sort the parameter    (Last Name, performance, etc).
+4. Implement interface Commissar which returns from the group an array of student youth who are over 18 years old.
