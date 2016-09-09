@@ -1,0 +1,1 @@
+Write program which will copy file with specific extension
