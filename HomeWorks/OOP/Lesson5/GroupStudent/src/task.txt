@@ -1,0 +1,2 @@
+Improve the class describing a group of students adding the ability to save a file group.
+Implement a reverse process - retrive data of the group from file, and on their basis to create an object such as a group
