@@ -1,0 +1,1 @@
+Write a program will take 2 files and returns one. The contents of this file should be be words that are in the first and second file.
