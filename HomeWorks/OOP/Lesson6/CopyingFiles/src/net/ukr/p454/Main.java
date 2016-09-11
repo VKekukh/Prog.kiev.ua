@@ -7,11 +7,9 @@ import java.io.File;
  */
 public class Main {
     public static void main(String[] args) {
-        File from  = new File("D:/Install");
+        File from  = new File("D:/Video/Films/Орел и Решка/Season 10");
         File to  = new File("D:/test");
         //FileOperation.copyFiles(from,to,"exe");
-        FileOperation.multiThreadedCopying(from,to,"exe");
-
-        System.out.println("Copying files have finished");
+        FileOperation.multiThreadedCopying(from,to,"mp4");
     }
 }

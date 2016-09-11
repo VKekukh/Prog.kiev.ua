@@ -6,7 +6,14 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.time.LocalTime;
+import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
+
+import static java.util.concurrent.Executors.newFixedThreadPool;
 
 /**
  * Created by vkekukh on 07.09.2016.
@@ -70,29 +77,32 @@ public class FileOperation{
     public static void multiThreadedCopying(File folderSource, File folderDestination, String extension){
 
         File[] fileList = getFileList(folderSource, extension);
-        Thread[] threadList = new Thread[fileList.length];
+        ExecutorService executorService =  Executors.newFixedThreadPool(Runtime.getRuntime().availableProcessors() * 2);
 
         if (!folderDestination.exists()) {
             folderDestination.mkdirs();
         }
 
+        ArrayList<Future<Long>> result = new ArrayList<>();
+
         for (int i = 0; i < fileList.length; i++) {
-            threadList[i] = new Thread(new MultiThreadedCopying(fileList[i],new File(folderDestination, fileList[i].getName()),"Thread " + i));
-            threadList[i].start();
+            result.add(executorService.submit(new MultiThreadedCopying(fileList[i],new File(folderDestination, fileList[i].getName()),"Thread " + i)));
         }
 
-        System.out.println("All threads is running");
+        Long totalSize = 0L;
 
-        for (int i = 0; i < fileList.length; i++) {
-
+        for (Future<Long> longFuture : result) {
             try {
-                threadList[i].join();
-            }catch (InterruptedException e){
-                System.err.println(e);
+                totalSize += longFuture.get();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            } catch (ExecutionException e) {
+                e.printStackTrace();
             }
-
         }
 
+        System.out.println("Total size:" + totalSize);
+        executorService.shutdown();
     }
 
     private static File[] getFileList(File folderSource, String extension){
