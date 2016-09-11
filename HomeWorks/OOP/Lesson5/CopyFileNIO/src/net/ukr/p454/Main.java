@@ -1,6 +1,8 @@
 package net.ukr.p454;
 
 import java.io.File;
+import java.io.IOException;
+import java.nio.file.*;
 
 /**
  * Created by Dalvik on 10.09.2016.
@@ -8,7 +10,7 @@ import java.io.File;
 public class Main {
 
     public static void main(String[] args) {
-        File from = new File("d:/");
+     File from = new File("d:/");
         File to = new File("d:/test");
 
         FileOperation.copyFiles(from, to, "txt", false);
@@ -17,6 +19,7 @@ public class Main {
         to = new File("D:/test/move");
 
         FileOperation.moveFiles(from, to, "txt", true);
+
 
     }
 }
