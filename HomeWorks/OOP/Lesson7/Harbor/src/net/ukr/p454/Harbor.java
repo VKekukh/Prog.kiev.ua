@@ -53,20 +53,22 @@ public class Harbor implements Runnable{
         }
     }
 
-    private int getFreeDock(){
-        int position  = -1;
-        while (true){
-            if(!docks[0].isBusy()){
-                position = 0;
-                break;
-            }
+    private synchronized int getFreeDock(){
+        int position = -1;
 
-            if (!docks[1].isBusy()){
-                position = 1;
-                break;
+        for (int i = 0; i < docks.length; i++) {
+            if(docks[i].isBusy()){
+                try {
+                    docks[i].wait();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }else
+            {
+                position = i;
             }
         }
-        return position;
+        return  position;
     }
 
     private void increaseShipArray() {
@@ -88,11 +90,11 @@ public class Harbor implements Runnable{
 
     @Override
     public void run() {
-        for (int i = 0; i < ships.length; i++) {
-            if (ships[i].getAmountOfBoxes() != 0) {
-                Thread subThread = new Thread(new Unloader(ships[i],docks[getFreeDock()]));
-                subThread.start();
+            for (int i = 0; i < ships.length; i++) {
+                if (ships[i].getAmountOfBoxes() != 0) {
+                    Thread thr= new Thread(new Unloader(ships[i], docks[getFreeDock()]));
+                    thr.start();
+                }
             }
-        }
     }
 }

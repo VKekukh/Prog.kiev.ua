@@ -18,7 +18,7 @@ public class Dock {
         return docName;
     }
 
-    public boolean isBusy() {
+    public synchronized   boolean isBusy() {
         return busy;
     }
 
@@ -27,7 +27,17 @@ public class Dock {
     }
 
     public synchronized void unloading(Ship ship) {
+
+        while(busy){
+            try {
+                wait();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+
         busy = true;
+
         Box[] boxes = ship.getBoxes();
         for (int i = 0; i < boxes.length; i++) {
 
@@ -38,7 +48,8 @@ public class Dock {
                 e.printStackTrace();
             }
         }
-        busy = false;
         ship.setBoxes(null);
+        busy = false;
+        notifyAll();
     }
 }

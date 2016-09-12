@@ -35,8 +35,9 @@ public class Main {
         Dock dockTwo = new Dock("DockTwo");
 
         Dock[] docks = {dockOne, dockTwo};
-        Ship[] ships = {alfa, beta, gamma};
+        Ship[] ships = {alfa, beta};
 
         Harbor harbor = new Harbor(docks,"Odessa",ships);
+
     }
 }
