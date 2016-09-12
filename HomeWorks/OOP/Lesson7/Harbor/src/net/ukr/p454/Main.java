@@ -13,9 +13,30 @@ public class Main {
             boxes[i] = box.clone();
         }
 
-        Ship alfa = new Ship("ALFA", boxes);
+        Box boxTwo = new Box("Boards", 10000);
+        Box[] boxesTwo = new Box[10];
 
-        Dock dockOne = new Dock("DockOne",alfa);
-        dockOne.unloading();
+        for (int i = 0; i < boxesTwo.length; i++) {
+            boxesTwo[i] = boxTwo.clone();
+        }
+
+        Box boxThree = new Box("Tobacco", 10000);
+        Box[] boxesThree = new Box[10];
+
+        for (int i = 0; i < boxesThree.length; i++) {
+            boxesThree[i] = boxThree.clone();
+        }
+
+        Ship alfa = new Ship("Alfa", boxes);
+        Ship beta = new Ship("Beta", boxesTwo);
+        Ship gamma = new Ship ("Gamma",boxesThree);
+
+        Dock dockOne = new Dock("DockOne");
+        Dock dockTwo = new Dock("DockTwo");
+
+        Dock[] docks = {dockOne, dockTwo};
+        Ship[] ships = {alfa, beta, gamma};
+
+        Harbor harbor = new Harbor(docks,"Odessa",ships);
     }
 }

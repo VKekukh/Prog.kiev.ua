@@ -5,39 +5,40 @@ package net.ukr.p454;
  */
 public class Dock {
     private String docName;
-    private Ship ship;
     private boolean busy;
 
-    public Dock(String docName, Ship ship) {
+    public Dock(String docName) {
         this.docName = docName;
-        this.ship = ship;
     }
 
     public Dock() {
     }
 
-    public Ship getShip() {
-        return ship;
+    public String getDocName() {
+        return docName;
     }
 
-    public void setShip(Ship ship) {
-        this.ship = ship;
+    public boolean isBusy() {
+        return busy;
     }
 
-    public synchronized void unloading(){
+    public void setDocName(String docName) {
+        this.docName = docName;
+    }
 
-        Box [] boxes = ship.getBoxes();
-        for (int i = 0; i < boxes.length; i++){
-            String content = boxes[i].getContent();
-            boxes[i] = null;
+    public synchronized void unloading(Ship ship) {
+        busy = true;
+        Box[] boxes = ship.getBoxes();
+        for (int i = 0; i < boxes.length; i++) {
 
             try {
+                System.out.println("Box with " + boxes[i].getContent() + " was unloaded from ship " + ship.getName() + " in dock " + this.docName);
                 Thread.sleep(1000);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-            System.out.println(this.docName + " unloaded from the ship " + ship.getName() + " one box with " + content);
         }
-        ship.setBoxes(boxes);
+        busy = false;
+        ship.setBoxes(null);
     }
 }

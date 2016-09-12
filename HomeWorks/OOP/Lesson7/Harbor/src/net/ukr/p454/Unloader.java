@@ -5,6 +5,15 @@ package net.ukr.p454;
  */
 public class Unloader implements Runnable {
     private Ship ship;
+    private Dock dock;
 
+    public Unloader(Ship ship, Dock dock) {
+        this.ship = ship;
+        this.dock = dock;
+    }
 
+    @Override
+    public void run() {
+        dock.unloading(ship);
+    }
 }
