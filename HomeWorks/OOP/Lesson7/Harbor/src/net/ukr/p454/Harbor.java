@@ -57,15 +57,9 @@ public class Harbor implements Runnable{
         int position = -1;
 
         for (int i = 0; i < docks.length; i++) {
-            if(docks[i].isBusy()){
-                try {
-                    docks[i].wait();
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-            }else
-            {
+            if (!docks[i].isBusy()) {
                 position = i;
+                break;
             }
         }
         return  position;
