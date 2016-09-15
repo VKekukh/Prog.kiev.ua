@@ -59,37 +59,32 @@ public class AsciiConversion {
 
         char[] characters = text.toUpperCase().toCharArray();
 
-        if (rotate) {
+
             try (PrintWriter writer = new PrintWriter(file)) {
                 StringBuilder builder = new StringBuilder();
                 String str[];
-
-                for (int i = 0; i < 16; i++) {
-                    for (char character : characters) {
-                        str = dictionary.get(character).split(System.lineSeparator());
-                        builder.append(str[i]);
-                        builder.append("   ");
+                if (rotate) {
+                    for (int i = 0; i < 16; i++) {
+                        for (char character : characters) {
+                            str = dictionary.get(character).split(System.lineSeparator());
+                            builder.append(str[i]);
+                            builder.append("   ");
+                        }
+                        builder.append(System.lineSeparator());
                     }
-                    builder.append(System.lineSeparator());
-                }
-                writer.write(builder.toString());
-                System.out.println(builder.toString());
-            } catch (IOException e) {
-                System.err.println("Can't write file");
-            }
+                    writer.write(builder.toString());
+                    System.out.println(builder.toString());
 
-        } else {
-            StringBuilder builder = new StringBuilder();
-            try (PrintWriter writer = new PrintWriter(file)) {
-                for (char character : characters) {
-                    builder.append(dictionary.get(character));
-                    builder.append(System.lineSeparator());
+                } else {
+                    for (char character : characters) {
+                        builder.append(dictionary.get(character));
+                        builder.append(System.lineSeparator());
+                    }
+                    System.out.println(builder.toString());
+                    writer.write(builder.toString());
                 }
-                System.out.println(builder.toString());
-                writer.write(builder.toString());
-            } catch (IOException e) {
+            }catch (IOException e) {
                 System.err.println("Can't write file");
             }
         }
     }
-}
