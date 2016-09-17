@@ -1,0 +1,1 @@
+Solve the task of counting the repeated elements in an array using HashMap.
