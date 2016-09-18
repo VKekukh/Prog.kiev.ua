@@ -1,5 +1,6 @@
 package net.ukr.p454.DAO;
 
+import net.ukr.p454.Group;
 import net.ukr.p454.Human;
 
 import java.io.*;

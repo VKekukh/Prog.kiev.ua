@@ -1,8 +1,8 @@
-package net.ukr.p454.DAO;
+package net.ukr.p454;
 
-import net.ukr.p454.*;
+import net.ukr.p454.DAO.IGroupDAO;
+import net.ukr.p454.DAO.IStudentDAO;
 
-import java.util.Set;
 import java.util.TreeSet;
 
 /**

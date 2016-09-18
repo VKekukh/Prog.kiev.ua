@@ -1,6 +1,5 @@
 package net.ukr.p454;
 
-import net.ukr.p454.DAO.Group;
 import net.ukr.p454.DAO.GroupCSV;
 import net.ukr.p454.DAO.StudentCSV;
 import net.ukr.p454.DAO.StudentConsole;
@@ -31,7 +30,7 @@ public class Main {
         Student studentLLP = new Student("Lisko Lucas Petrovich", 16, "ukrainian",
                 LocalDate.of(1996, Month.AUGUST, 5), "Vinnitsa", Sex.MALE, "FEL", 1);
 
-        //Student console = Student.addStudent(new StudentConsole());
+        Student console = Student.addStudent(new StudentConsole());
 
         Group group = new Group("DZ-33", curator);
 
@@ -40,7 +39,7 @@ public class Main {
             group.addStudent(studentIAI);
             group.addStudent(studentLLI);
             group.addStudent(studentLLP);
-        //    group.addStudent(console);
+            group.addStudent(console);
         } catch (GroupExeption groupExeption) {
             groupExeption.showMessage("Group is full");
         }
