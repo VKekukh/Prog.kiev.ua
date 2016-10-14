@@ -26,6 +26,15 @@ public class Dock {
 
     public synchronized void unloading(){
 
+        while (busy){
+            try {
+                wait();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+
+        busy = true;
         Box [] boxes = ship.getBoxes();
         for (int i = 0; i < boxes.length; i++){
             String content = boxes[i].getContent();
@@ -39,5 +48,7 @@ public class Dock {
             System.out.println(this.docName + " unloaded from the ship " + ship.getName() + " one box with " + content);
         }
         ship.setBoxes(boxes);
+        busy = false;
+        notifyAll();
     }
 }
