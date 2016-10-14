@@ -4,14 +4,23 @@ package net.ukr.p454;
 /**
  * Created by Dalvik on 11.09.2016.
  */
-public class Harbor {
+public class Harbor implements Runnable{
     String name;
-    Dock[] docks = new Dock[0];
-    Ship[] ships = new Ship[2];
-    boolean portRunning = true;
+    Dock[] docks = new Dock[2];
+    Ship[] ships = new Ship[0];
+
+    Thread thread;
 
     public Harbor(String name) {
         this.name = name;
+    }
+
+    public Harbor(Dock[] docks, String name, Ship[] ships) {
+        this.docks = docks;
+        this.name = name;
+        this.ships = ships;
+        thread = new Thread(this,"Run Harbor");
+        thread.start();
     }
 
     public Harbor() {
@@ -27,6 +36,7 @@ public class Harbor {
 
     public void addShip(Ship ship) {
         int position = getFreePosition();
+
         if (position==-1){
             increaseShipArray();
             ships[ships.length - 1] = ship;
@@ -43,14 +53,16 @@ public class Harbor {
         }
     }
 
-    public void unloadShip(){
-        int position = 0;
-        while (portRunning){
-            if(ships[position] != null){
-                
+    private synchronized int getFreeDock(){
+        int position = -1;
+
+        for (int i = 0; i < docks.length; i++) {
+            if (!docks[i].isBusy()) {
+                position = i;
+                break;
             }
-            position = ((++position) > ships.length)?0:position;
         }
+        return  position;
     }
 
     private void increaseShipArray() {
@@ -68,5 +80,15 @@ public class Harbor {
             }
         }
         return position;
+    }
+
+    @Override
+    public void run() {
+            for (int i = 0; i < ships.length; i++) {
+                if (ships[i].getAmountOfBoxes() != 0) {
+                    Thread thr= new Thread(new Unloader(ships[i], docks[getFreeDock()]));
+                    thr.start();
+                }
+            }
     }
 }

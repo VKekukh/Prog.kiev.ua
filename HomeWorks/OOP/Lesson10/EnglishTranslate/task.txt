@@ -1,0 +1,1 @@
+Write a program "Translator"which will be read a text from file and save translation to another file.

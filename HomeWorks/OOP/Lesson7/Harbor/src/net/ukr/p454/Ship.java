@@ -31,6 +31,17 @@ public class Ship {
         this.boxes = boxes;
     }
 
+    public int  getAmountOfBoxes(){
+        int  amountOfBoxes = 0;
+
+        for (int i = 0; i < boxes.length; i++) {
+            if(boxes[i] != null){
+                amountOfBoxes++;
+            }
+        }
+        return amountOfBoxes;
+    }
+
     @Override
     public String toString() {
         StringBuilder builder  = new StringBuilder();
