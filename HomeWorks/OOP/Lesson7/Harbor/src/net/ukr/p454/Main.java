@@ -13,6 +13,26 @@ public class Main {
             boxes[i] = box.clone();
         }
 
+<<<<<<< HEAD
+        Box boxTwo = new Box("Keyboards", 10000);
+        Box[] boxesTwo = new Box[10];
+
+        for (int i = 0; i < boxesTwo.length; i++) {
+            boxes[i] = boxTwo.clone();
+        }
+
+
+        Ship alfa = new Ship("ALFA", boxes);
+        Ship beta = new Ship("Betta", boxesTwo);
+
+        Dock dockOne = new Dock("DockOne",alfa);
+        Thread thread = new Thread(new Unloader(alfa,dockOne));
+        Thread threadTwo = new Thread(new Unloader(beta,dockOne));
+
+        thread.start();
+        threadTwo.start();
+
+=======
         Box boxTwo = new Box("Boards", 10000);
         Box[] boxesTwo = new Box[10];
 
@@ -39,5 +59,6 @@ public class Main {
 
         Harbor harbor = new Harbor(docks,"Odessa",ships);
 
+>>>>>>> b494a24e7d319cb5850cbf6d9bdc00c7bd45ae1f
     }
 }

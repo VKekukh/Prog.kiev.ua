@@ -38,8 +38,24 @@ public class Dock {
 
         busy = true;
 
+<<<<<<< HEAD
+        while (busy){
+            try {
+                wait();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+
+        busy = true;
+        Box [] boxes = ship.getBoxes();
+        for (int i = 0; i < boxes.length; i++){
+            String content = boxes[i].getContent();
+            boxes[i] = null;
+=======
         Box[] boxes = ship.getBoxes();
         for (int i = 0; i < boxes.length; i++) {
+>>>>>>> b494a24e7d319cb5850cbf6d9bdc00c7bd45ae1f
 
             try {
                 System.out.println("Box with " + boxes[i].getContent() + " was unloaded from ship " + ship.getName() + " in dock " + this.docName);
@@ -48,7 +64,11 @@ public class Dock {
                 e.printStackTrace();
             }
         }
+<<<<<<< HEAD
+        ship.setBoxes(boxes);
+=======
         ship.setBoxes(null);
+>>>>>>> b494a24e7d319cb5850cbf6d9bdc00c7bd45ae1f
         busy = false;
         notifyAll();
     }
