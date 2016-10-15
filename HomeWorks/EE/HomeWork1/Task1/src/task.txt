@@ -1,0 +1,1 @@
+Create annotation which has parameters for a method. Run this method with parameters of the annotation.
