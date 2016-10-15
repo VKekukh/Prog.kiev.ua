@@ -1,0 +1,1 @@
+Create class TextContainer which has a String fields. Create two annotations: SaveTo,which contains a path; and Saver which marks method for saving fields;
