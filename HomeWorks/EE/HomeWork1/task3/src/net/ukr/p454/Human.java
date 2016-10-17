@@ -17,15 +17,28 @@ public class Human implements Externalizable{
     @SaveFields
     private int age;
     @SaveFields
-    private Character sex;
+    private Boolean sex;
     @SaveFields
     private double weight;
     private int height;
+    @SaveFields
+    private Hairstyle hairstyle;
+
 
     public Human() {
     }
 
-    public Human(String name, int age, Character sex, double weight, int height) {
+    public Human(String name, int age, Boolean sex, double weight, int height, Hairstyle hairstyle) {
+        this.name = name;
+        this.age = age;
+        this.sex = sex;
+        this.weight = weight;
+        this.height = height;
+        this.hairstyle = hairstyle;
+    }
+
+
+    public Human(String name, int age, Boolean sex, double weight, int height) {
         this.name = name;
         this.age = age;
         this.sex = sex;
@@ -33,7 +46,7 @@ public class Human implements Externalizable{
         this.height = height;
     }
 
-    public Human(String name, int age, Character sex) {
+    public Human(String name, int age, Boolean sex) {
         this.name = name;
         this.age = age;
         this.sex = sex;
@@ -55,11 +68,11 @@ public class Human implements Externalizable{
         this.age = age;
     }
 
-    public Character getSex() {
+    public Boolean getSex() {
         return sex;
     }
 
-    public void setSex(Character sex) {
+    public void setSex(Boolean sex) {
         this.sex = sex;
     }
 
@@ -79,6 +92,14 @@ public class Human implements Externalizable{
         this.height = height;
     }
 
+    public Hairstyle getHairstyle() {
+        return hairstyle;
+    }
+
+    public void setHairstyle(Hairstyle hairstyle) {
+        this.hairstyle = hairstyle;
+    }
+
     @Override
     public String toString() {
         return "Human{" +
@@ -87,6 +108,7 @@ public class Human implements Externalizable{
                 ", sex=" + sex +
                 ", weight=" + weight +
                 ", height=" + height +
+                ", hairstyle=" + hairstyle +
                 '}';
     }
 
@@ -105,7 +127,7 @@ public class Human implements Externalizable{
 
         name = (String) in.readObject();
         age = (Integer) in.readInt();
-        sex = (Character) in.readObject();
+        sex = (Boolean) in.readBoolean();
         weight = (Double) in.readDouble();
         height = (Integer) in.readInt();
     }
