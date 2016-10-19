@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<trainStation>
+  <name>Kiev</name>
+  <train id="100">
+    <from>Kiev</from>
+    <to>Lviv</to>
+    <date>2016-10-19</date>
+    <departure>09:00</departure>
+  </train>
+  <train id="101">
+    <from>Kiev</from>
+    <to>Odesa</to>
+    <date>2016-10-19</date>
+    <departure>09:30</departure>
+  </train>
+  <train id="103">
+    <from>Kiev</from>
+    <to>Prague</to>
+    <date>2016-10-19</date>
+    <departure>16:30</departure>
+  </train>
+  <train id="104">
+    <from>Kiev</from>
+    <to>Krakow</to>
+    <date>2016-10-19</date>
+    <departure>17:28</departure>
+  </train>
+  <train id="102">
+    <from>Kiev</from>
+    <to>Rovno</to>
+    <date>2016-10-19</date>
+    <departure>14:09</departure>
+  </train>
+</trainStation>
