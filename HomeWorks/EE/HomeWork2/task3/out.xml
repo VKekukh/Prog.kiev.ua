@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<results>
+    <rate id="USDEUR">
+        <Name>USD/EUR</Name>
+        <Rate>0.9119</Rate>
+        <Date>10/19/2016</Date>
+        <Time>7:02pm</Time>
+        <Ask>0.9124</Ask>
+        <Bid>0.9119</Bid>
+    </rate>
+    <rate id="USDUAH">
+        <Name>USD/UAH</Name>
+        <Rate>25.6800</Rate>
+        <Date>10/19/2016</Date>
+        <Time>6:22pm</Time>
+        <Ask>25.9300</Ask>
+        <Bid>25.6800</Bid>
+    </rate>
+    <test>None</test>
+</results>
