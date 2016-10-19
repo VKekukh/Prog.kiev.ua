@@ -19,23 +19,34 @@ public class Main {
         Train train100 = new Train(100,"Kiev","Lviv", LocalDate.of(2016,10,19), LocalTime.of(9,0,0));
         Train train101 = new Train(101,"Kiev","Odesa", LocalDate.of(2016,10,19), LocalTime.of(9,30,0));
 
+        TrainStation station = new TrainStation("Kiev");
+        station.add(train100);
+        station.add(train101);
+
+        TrainStation newStation;
+
         File file  = new File("output.xml");
         try{
 
-            JAXBContext jaxbContext = JAXBContext.newInstance(Train.class);
+            JAXBContext jaxbContext = JAXBContext.newInstance(TrainStation.class);
 
             Marshaller marshaller = jaxbContext.createMarshaller();
 
             marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
 
-            marshaller.marshal(train100,file);
+            marshaller.marshal(station,file);
 
             Unmarshaller unmarshaller = jaxbContext.createUnmarshaller();
 
-            train101 = (Train) unmarshaller.unmarshal(file);
+            newStation = (TrainStation) unmarshaller.unmarshal(file);
 
-            System.out.println(train101);
+            newStation.add(new Train(103,"Kiev","Prague",LocalDate.of(2016,10,19), LocalTime.of(16,30)));
+            newStation.add(new Train(104,"Kiev","Krakow",LocalDate.of(2016,10,19), LocalTime.of(17,28)));
 
+            newStation.searchTrains(LocalDate.now(), LocalTime.of(15, 0), LocalTime.of(19, 0));
+            newStation.searchTrains(LocalDate.now(), "krakow");
+
+            marshaller.marshal(newStation,file);
         }catch(JAXBException e) {
             e.printStackTrace();
         }

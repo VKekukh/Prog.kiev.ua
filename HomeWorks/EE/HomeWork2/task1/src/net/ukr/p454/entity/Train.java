@@ -9,6 +9,7 @@ import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.Locale;
 
 /**
  * Created by Dalvik on 18.10.2016.
