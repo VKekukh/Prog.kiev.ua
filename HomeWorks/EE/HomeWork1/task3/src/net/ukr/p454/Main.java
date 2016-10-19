@@ -7,14 +7,14 @@ import java.io.*;
  */
 public class Main {
     public static void main(String[] args) {
-        Human human = new Human("Ivan", 30, 'M', 80.1, 186);
-        System.out.println(human.toString());
+        Hairstyle hairstyle = new Hairstyle(10, "black");
+        Human human = new Human("Ivan", 30, true, 80.1, 186, hairstyle);
+        SpecialSerialize.saveObject(human);
 
-        SpecialSerialize.saveObject(human,"fields.txt");
+        human.setAge(40);
+        System.out.println("Old human " + human.toString());
 
-        Human newHuman = new Human();
-
-        SpecialSerialize.loadObject(newHuman,"fields.txt");
-        System.out.println("Deserialize:" + newHuman.toString());
+        human = SpecialSerialize.loadObject("Human.txt");
+        System.out.println("Restore human " + human.toString());
     }
 }
