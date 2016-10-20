@@ -1,4 +1,4 @@
-package net.ukr.p454.formatters;
+package net.ukr.p454.formatter;
 
 import javax.xml.bind.annotation.adapters.XmlAdapter;
 import java.time.LocalDate;

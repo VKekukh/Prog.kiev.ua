@@ -1,17 +1,17 @@
-package net.ukr.p454.formatters;
+package net.ukr.p454.formatter;
 
 import javax.xml.bind.annotation.adapters.XmlAdapter;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
-
 /**
- * Created by Dalvik on 18.10.2016.
+ * Created by vkekukh on 20.10.2016.
  */
-public class TimeFormatter extends XmlAdapter<String,LocalTime> {
+public class TimeFormatter extends XmlAdapter<String,LocalTime
+        > {
     @Override
     public LocalTime unmarshal(String v) throws Exception {
-        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("HH:mm");
-        LocalTime time = LocalTime.parse(v,dtf );
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("H:mma");
+        LocalTime time = LocalTime.parse(v.toUpperCase(),dtf );
         return time;
     }
 

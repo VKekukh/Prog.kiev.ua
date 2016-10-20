@@ -5,19 +5,23 @@ import javax.xml.bind.annotation.XmlRootElement;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by Dalvik on 19.10.2016.
- */
 
-@XmlRootElement (name = "results")
-public class Result {
+/**
+ * Created by vkekukh on 20.10.2016.
+ */
+@XmlRootElement(name = "results")
+public class Results {
 
     private List<Rate> rates = new ArrayList<>();
 
+    public Results(List<Rate> rates) {
+        this.rates = rates;
+    }
 
-    private String test;
+    public Results() {
+    }
 
-    @XmlElement
+    @XmlElement(name = "rate")
     public List<Rate> getRates() {
         return rates;
     }
@@ -26,20 +30,10 @@ public class Result {
         this.rates = rates;
     }
 
-    @XmlElement
-    public String getTest() {
-        return test;
-    }
-
-    public void setTest(String test) {
-        this.test = test;
-    }
-
     @Override
     public String toString() {
-        return "Result{" +
+        return "Results{" +
                 "rates=" + rates +
-                ", test='" + test + '\'' +
                 '}';
     }
 }
