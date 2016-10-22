@@ -5,6 +5,7 @@ import net.ukr.p454.entity.RegisterUser;
 import net.ukr.p454.entity.User;
 
 
+import java.io.File;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -43,5 +44,11 @@ public class LoginServlet extends HttpServlet {
     public void init() throws ServletException {
         super.init();
         RegisterUser.addUser(new User("Vladislav","Kekukh","talismanvk@gmail.com",""));
+        File file = new File("output.txt");
+        try {
+            file.createNewFile();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }
