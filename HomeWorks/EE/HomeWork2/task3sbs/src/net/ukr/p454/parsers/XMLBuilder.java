@@ -1,4 +1,4 @@
-package net.ukr.p454;
+package net.ukr.p454.parsers;
 
 import org.w3c.dom.Document;
 import org.xml.sax.InputSource;
