@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        Questionnaire
+    </title>
+
+    <style>
+        div{
+            margin-top: 10%;
+        }
+        .b1 {
+            background: #85ABC2;
+            color: #06324B;
+            font-size: 16pt; /* Размер шрифта в пунктах */
+            width: 100pt;
+        }
+
+        A {
+            color: white; /* Цвет текста */
+            padding: 2px; /* Поля вокруг текста */
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+<div>
+    <form action="/login" method="post">
+        <table align="center" width="300" border="0" cellspacing="5" cellpadding="2" bgcolor="#6899B6">
+            <tr>
+                <td colspan="2" align="right">
+                    <a href="registration.html" col>Registration</a>
+                </td>
+            </tr>
+            <tr>
+                <td>Login</td>
+                <td>
+                    <input name="login" style="width: 200pt" placeholder="E-mail">
+                </td>
+            </tr>
+            <tr>
+                <td>Password</td>
+                <td><input type="password" name = "password" style="width: 200pt"  placeholder="Password"></td>
+            </tr>
+            <tr><td colspan="2"><br></td></tr>
+            <tr>
+                <td colspan="2" align="center"> <input type="submit" value="Login" class="b1"></td>
+            <tr>
+        </table>
+    </form>
+</div>
+</body>
+</html>

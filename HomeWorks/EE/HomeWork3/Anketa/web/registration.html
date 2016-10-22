@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Registration</title>
+    <style>
+        div {
+            margin-top: 10%;
+        }
+
+        .b1 {
+            background: #85ABC2;
+            color: #06324B;
+            font-size: 16pt; /* Размер шрифта в пунктах */
+            width: 100pt;
+        }
+
+    </style>
+</head>
+<body>
+<div>
+    <form action="/registrationCompleted" method="post">
+    <table align="center" width="400pt" border="0" cellspacing="5" cellpadding="2" bgcolor="#6899B6">
+        <tr>
+            <td width="30%">Name:</td>
+            <td><input name="name" style="width: 200pt"></td>
+        </tr>
+
+        <tr>
+            <td width="30%">Last Name:</td>
+            <td><input name="lastname" style="width: 200pt"></td>
+        </tr>
+
+        <tr>
+            <td width="30%">Email:</td>
+            <td><input name="email" style="width: 200pt"></td>
+        </tr>
+
+        <tr>
+            <td width="30%">Password:</td>
+            <td><input type="password" name="password" style="width: 200pt"></td>
+        </tr>
+
+        <tr>
+            <td colspan="2" align="center"><input type="submit" value="Register" class="b1"></td>
+        <tr>
+    </table>
+    </form>
+</div>
+</body>
+</html>

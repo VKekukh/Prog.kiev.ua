@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Questionnaire</title>
+    <style>
+        div {
+            margin-top: 5%;
+        }
+        p{
+            text-indent: 15pt;
+        }
+        .b1 {
+            background: #85ABC2;
+            color: #06324B;
+            font-size: 16pt; /* Размер шрифта в пунктах */
+            width: 50pt;
+            margin-left: 20pt;
+        }
+    </style>
+</head>
+<body>
+<diV>
+    <form action="/stats" method="post">
+        <b>1. The capital of Ukraine is:</b>
+        <p><input type="radio" name="ukraine" value="Kiev"> Kiev</p>
+        <p><input type="radio" name="ukraine" value="Lvov"> Lvov</p>
+        <p><input type="radio" name="ukraine" value="Kanev"> Kanev</p>
+
+        <b>2. The capital of Germany is:</b>
+        <p><input type="radio" name="germany" value="Berlin"> Berlin</p>
+        <p><input type="radio" name="germany" value="Dresden"> Dresden</p>
+        <p><input type="radio" name="germany" value="Franfurkt-am-main"> Franfurkt-am-main</p>
+
+        <b>3. The capital of Poland is:</b>
+        <p><input type="radio" name="poland" value="Krakow"> Krakow</p>
+        <p><input type="radio" name="poland" value="Warsaw"> Warsaw</p>
+        <p><input type="radio" name="poland" value="Wroclav"> Wroclav</p>
+
+        <input type="submit" class="b1" value = "Sent">
+    </form>
+</diV>
+</body>
+</html>
