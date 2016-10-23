@@ -37,4 +37,16 @@ public class RegisterUser {
         }
         return user;
     }
+
+    public static User getUserbyEmail(String email){
+        User user = null;
+
+        for (User u : users) {
+            if(u.getEmail().equalsIgnoreCase(email)){
+                user = u;
+                break;
+            }
+        }
+        return user;
+    }
 }

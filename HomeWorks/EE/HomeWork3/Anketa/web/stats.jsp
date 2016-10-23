@@ -9,6 +9,7 @@
 <%@ page import="net.ukr.p454.entity.Answers" %>
 <%@ page import="java.util.Map" %>
 <%@ page import="net.ukr.p454.entity.Question" %>
+<%@ page import="javax.servlet.http.HttpSession"%>
 
 <html>
 <head>
@@ -20,7 +21,8 @@
     </style>
 </head>
 <body>
-<h1>STATISTICS</h1>
+
+<h1>STATISTICS for  <%= session.getAttribute("name")%></h1>
 <%
     for (Map.Entry<Question,Map<String,Integer>> map: Answers.getAnswers().entrySet()){
 %>

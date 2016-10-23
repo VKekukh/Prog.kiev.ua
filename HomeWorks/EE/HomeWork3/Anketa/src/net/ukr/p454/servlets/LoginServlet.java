@@ -33,6 +33,10 @@ public class LoginServlet extends HttpServlet {
 
 
         if ( (user = RegisterUser.checkUser(login,pass)) != null){
+
+            HttpSession session = req.getSession();
+            session.setAttribute("name", user.getName());
+
             resp.sendRedirect("/questionnaire.html");
         }
         else {
