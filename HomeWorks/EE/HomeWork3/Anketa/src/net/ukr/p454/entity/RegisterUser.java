@@ -1,11 +1,18 @@
 package net.ukr.p454.entity;
 
+
+import javax.xml.bind.JAXBContext;
+import javax.xml.bind.JAXBException;
+import javax.xml.bind.Marshaller;
+
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
 /**
  * Created by Dalvik on 22.10.2016.
  */
+
 public class RegisterUser {
 
     private static volatile List<User> users = new ArrayList<>();
@@ -21,6 +28,7 @@ public class RegisterUser {
         }
         if(check){
             users.add(user);
+            saveUsers();
         }
 
         return check;
@@ -48,5 +56,28 @@ public class RegisterUser {
             }
         }
         return user;
+    }
+
+    public static List<User> getUsers() {
+        return users;
+    }
+
+    private static void saveUsers(){
+        try {
+
+            Users users = new Users();
+            users.setList(RegisterUser.getUsers());
+
+            JAXBContext context = JAXBContext.newInstance(Users.class);
+            Marshaller marshaller = context.createMarshaller();
+            marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
+            marshaller.marshal(users, new File("users.txt"));
+        } catch (JAXBException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void setUsers(List<User> users) {
+        RegisterUser.users = users;
     }
 }

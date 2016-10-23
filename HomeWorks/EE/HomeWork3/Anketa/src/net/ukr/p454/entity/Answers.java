@@ -1,5 +1,6 @@
 package net.ukr.p454.entity;
 
+import javax.xml.bind.annotation.XmlRootElement;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -7,6 +8,7 @@ import java.util.Map;
 /**
  * Created by Dalvik on 22.10.2016.
  */
+
 public class Answers {
 
     private static volatile  Map<Question, Map<String,Integer>> answers = new HashMap<>();

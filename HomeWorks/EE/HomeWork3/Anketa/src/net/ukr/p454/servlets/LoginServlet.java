@@ -3,13 +3,13 @@ package net.ukr.p454.servlets;
 
 import net.ukr.p454.entity.RegisterUser;
 import net.ukr.p454.entity.User;
-
-
+import net.ukr.p454.entity.Users;
 import java.io.File;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.*;
+import javax.xml.bind.*;
 
 
 /**
@@ -47,12 +47,16 @@ public class LoginServlet extends HttpServlet {
     @Override
     public void init() throws ServletException {
         super.init();
-        RegisterUser.addUser(new User("Vladislav","Kekukh","talismanvk@gmail.com",""));
-        File file = new File("output.txt");
-        try {
-            file.createNewFile();
-        } catch (IOException e) {
-            e.printStackTrace();
+        File file = new File("users.txt");
+        if (file.exists()){
+            try {
+                JAXBContext context = JAXBContext.newInstance(Users.class);
+                Unmarshaller unmarshaller = context.createUnmarshaller();
+                Users users = (Users) unmarshaller.unmarshal(file);
+                RegisterUser.setUsers(users.getList());
+            } catch (JAXBException e) {
+                e.printStackTrace();
+            }
         }
     }
 }
